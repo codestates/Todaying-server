@@ -33,8 +33,10 @@ app.use(session({
 
 app.use('/user', userRouter);
 app.use('/auth', authRouter);
+
 // app.use('/main', mainRouter);
 // app.use('/mypage', myPageRouter);
+
 
 app.get('/main',(req,res,nex)=> {
   res.send('리디렉션 성공')
