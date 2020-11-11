@@ -6,7 +6,7 @@ const session = require('express-session');
 const dotenv = require('dotenv');
 dotenv.config();
 
-// const userRouter = require('./routes/user');
+const userRouter = require('./routes/user');
 // const mainRouter = require('./routes/main');
 // const myPageRouter = require('./routes/mypage');
 
@@ -28,11 +28,13 @@ app.use(session({
   },
 }));
 
-// app.use('/user', userRouter);
+app.use('/user', userRouter);
 // app.use('/main', mainRouter);
 // app.use('/mypage', myPageRouter);
 
-
+app.get('/main',(req,res,nex)=> {
+  res.send('리디렉션 성공')
+})
 
 app.get('/', (req, res, next) => {
     res.send('hello world!');
