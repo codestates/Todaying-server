@@ -16,7 +16,8 @@ module.exports = {
         },
         defaults: {
           password: password,
-          nickname: nickname
+          nickname: nickname,
+          type: 'normal'
         }
       })
       .then(async ([users, created]) => {
