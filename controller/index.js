@@ -1,5 +1,8 @@
+const mypage = require('./mypage');
+
 module.exports = {    
     usersController: require('./users'),
-    authController: require('./auth')
+    authController: require('./auth'),
+    mypageController: require('./mypage')
   };
   

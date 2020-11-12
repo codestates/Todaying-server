@@ -27,5 +27,7 @@ module.exports = {
         const data = await users.get({ plain: true });
         res.status(200).json(data);
       });
+
+      
   }
 };

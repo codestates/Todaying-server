@@ -9,7 +9,7 @@ dotenv.config();
 const userRouter = require('./routes/user');
 const authRouter = require('./routes/auth');
 // const mainRouter = require('./routes/main');
-// const myPageRouter = require('./routes/mypage');
+const myPageRouter = require('./routes/mypage');
 
 const app = express();
 
@@ -35,7 +35,7 @@ app.use('/user', userRouter);
 app.use('/auth', authRouter);
 
 // app.use('/main', mainRouter);
-// app.use('/mypage', myPageRouter);
+app.use('/mypage', myPageRouter);
 
 
 app.get('/main',(req,res,nex)=> {
