@@ -43,7 +43,9 @@ module.exports={
       }) 
       .then(data => {
         req.session.userId = data[0].dataValues.id               
-        res.redirect('ec2-13-125-255-14.ap-northeast-2.compute.amazonaws.com/main')
+        let response = {}
+        response.email = data[0].dataValues.email
+        response.nickname = data[0].dataValues.nickname
       })  
       .catch(err => {console.log(err.message)})      
     } 

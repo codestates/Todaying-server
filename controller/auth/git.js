@@ -61,7 +61,10 @@ module.exports={
   }) 
   .then(data => {       
     req.session.userId = data[0].dataValues.id
-    res.send(data[0].dataValues)
+    let response ={};
+    response.email = data[0].dataValues.email
+    response.nickname = data[0].dataValues.nickname
+    res.send(response)
   }) 
   .catch(err => {
     console.log (err)
