@@ -60,8 +60,8 @@ module.exports={
     })      
   }) 
   .then(data => {       
-    req.session.userId = data[0].dataValues.id             
-    res.redirect('ec2-13-125-255-14.ap-northeast-2.compute.amazonaws.com:3001/main')       
+    req.session.userId = data[0].dataValues.id
+    res.send(data[0].dataValues)
   }) 
   .catch(err => {
     console.log (err)

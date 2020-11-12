@@ -31,6 +31,13 @@ app.use(session({
   },
 }));
 
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+);
+
 app.use('/user', userRouter);
 app.use('/auth', authRouter);
 
@@ -46,7 +53,7 @@ app.get('/', (req, res, next) => {
     res.send('여기는 루트 페이지입니다.');
 });
 
-app.use(cors());
+
 app.use((req, res, next) => {
     const error =  new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
     error.status = 404;
