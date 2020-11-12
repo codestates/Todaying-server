@@ -9,6 +9,7 @@ module.exports={
       const clientID = process.env.GITHUB_ID;
       const clientSecret = process.env.GITHUB_SECRET;
        let result = [];
+       console.log(requestToken)
 
   axios({
     method: 'post',
@@ -48,8 +49,7 @@ module.exports={
     return user.findOrCreate({
       where: {
         email: result[0],
-        type: 'github',     
-        uniqueId: result[2]      
+        type: 'github',                 
       },
       defaults: {   
         nickname: result[1],             

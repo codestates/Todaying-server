@@ -46,7 +46,7 @@ module.exports={
         let response = {}
         response.email = data[0].dataValues.email
         response.nickname = data[0].dataValues.nickname
-        res.send(response)
+        res.send('되긴 함')
       })  
       .catch(err => {console.log(err.message)})      
     } 
