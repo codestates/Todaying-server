@@ -10,5 +10,3 @@ router.post('/signin',usersController.signin.post);
 //post sign up 일반 회원가입 
 
 router.post('/signup',usersController.signup.post);
-
-module.exports= router;
