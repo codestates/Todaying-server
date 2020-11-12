@@ -22,10 +22,14 @@ module.exports = {
       })
       .then(async ([users, created]) => {
         if (!created) {
-          return res.status(409).send('유저 정보가 이미 존재합니다');
-        }
-        const data = await users.get({ plain: true });
-        res.status(200).json(data);
+          return res.status(409).send('유저 정보가 이미 존재합니다');        
+        }       
+        const data = await users.get({ plain: true });               
+        req.session.userId = data.id
+        res.status(200).json({
+          email: data.email,
+          nickname: data.nickname
+        });
       });
 
       
