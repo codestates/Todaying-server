@@ -13,7 +13,7 @@ const authRouter = require('./routes/auth');
 
 const app = express();
 
-app.set('port', 3000);
+app.set('port', 80);
 
 
 app.use(morgan('dev'));

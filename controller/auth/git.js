@@ -6,8 +6,8 @@ dotenv.config();
 module.exports={
     get: (req, res) => {
       const requestToken = req.query.code
-      const clientID = process.env.CLIENT_ID;
-      const clientSecret = process.env.CLIENT_SECRET;
+      const clientID = process.env.GITHUB_ID;
+      const clientSecret = process.env.GITHUB_SECRET;
        let result = [];
 
   axios({
@@ -43,25 +43,26 @@ module.exports={
   .then(data =>{
     result.push(data.data.login)
     result.push(data.data.id)
-    result.push(accessToken)    
-    return user
-    .findOrCreate({
+    result.push(accessToken)  
+    console.log(result)
+    return user.findOrCreate({
       where: {
         email: result[0],
-        nickname: result[1],
-        uniqueId: result[2]        
+        type: 'github',     
+        uniqueId: result[2]      
       },
-      defaults: {                
-        type: 'github',
-        token: result[3]
+      defaults: {   
+        nickname: result[1],             
+        uniqueId: result[2] ,
+        token: result[3], 
+        password:''       
       }
-    })       
-  })
-  .then(data => {    
-    req.session.userId = data[0].dataValues.id
-    req.session.token = accessToken        
-    res.redirect('http://9a8c1c5766bc.ngrok.io')
-  })
+    })      
+  }) 
+  .then(data => {       
+    req.session.userId = data[0].dataValues.id             
+    res.redirect('13.125.255.14:3000/main')       
+  }) 
   .catch(err => {
     console.log (err)
   })
@@ -69,4 +70,3 @@ module.exports={
 }
 
 }
-//res.redirect('https://fb5a58ff3ba5.ngrok.io');
