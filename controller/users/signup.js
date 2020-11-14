@@ -24,12 +24,16 @@ module.exports = {
         if (!created) {
           return res.status(409).send('유저 정보가 이미 존재합니다');        
         }       
-        const data = await users.get({ plain: true });               
+        const data = await users.get({ plain: true });                     
         req.session.userId = data.id
+        
+      //  res.redirect('https://698291f62e4e.ngrok.io/main')
         res.status(200).json({
           email: data.email,
           nickname: data.nickname
-        });
+        })
+       
       });
   }
 };
+

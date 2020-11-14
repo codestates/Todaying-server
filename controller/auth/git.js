@@ -8,8 +8,8 @@ module.exports={
       const requestToken = req.query.code
       const clientID = process.env.GITHUB_ID;
       const clientSecret = process.env.GITHUB_SECRET;
-       let result = [];
-       console.log(requestToken)
+      
+      
 
   axios({
     method: 'post',
@@ -18,7 +18,7 @@ module.exports={
       accept: 'application/json'
     }
   })
-  .then((response) => {    
+  .then((response) => {        
     accessToken = response.data.access_token;  
     refreshToken = response.data.refresh_token;    
     
@@ -32,7 +32,7 @@ module.exports={
       
   })
   .then (data => {  
-    result.push(data.data[0].email)      
+    email = data.data[0].email       
     return axios({
       method: 'get',
       url: `https://api.github.com/user`,
@@ -41,30 +41,33 @@ module.exports={
       }
     })    
   })
-  .then(data =>{
-    result.push(data.data.login)
-    result.push(data.data.id)
-    result.push(accessToken)  
-    console.log(result)
+  .then(data =>{        
     return user.findOrCreate({
       where: {
-        email: result[0],
+        email: email,
         type: 'github',                 
       },
       defaults: {   
-        nickname: result[1],             
-        uniqueId: result[2] ,
-        token: result[3], 
+        nickname: data.data.login,          
+        token: accessToken, 
         password:''       
       }
     })      
   }) 
-  .then(data => {       
+  .then(data => {          
     req.session.userId = data[0].dataValues.id
-    let response ={};
-    response.email = data[0].dataValues.email
-    response.nickname = data[0].dataValues.nickname
-    res.send(response)
+   
+    // res.send({
+    //   email:data[0].dataValues.email,
+    //   nickname:data[0].dataValues.nickname
+    // })
+    // req.session.userId = data[0].dataValues.id          
+    // res.send({
+    //   email:data[0].dataValues.email,
+    //   nickname:data[0].dataValues.nickname
+    // })
+    
+    res.redirect(`https://bbc7cc2e1237.ngrok.io/main?email=${data[0].dataValues.email}&nickname=${data[0].dataValues.nickname}`)
   }) 
   .catch(err => {
     console.log (err)
