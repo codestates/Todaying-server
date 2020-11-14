@@ -15,6 +15,10 @@ const app = express();
 
 app.set('port', 3006);
 
+app.use(function(req, res) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+});
 
 app.use(morgan('dev'));
 app.use(express.json());
@@ -30,6 +34,7 @@ app.use(session({
     sameSite: 'None'
   },
 }));
+
 
 app.use(
   cors({

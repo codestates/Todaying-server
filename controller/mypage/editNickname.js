@@ -12,7 +12,7 @@ module.exports = {
            res.status(500).send('수정에 실패했습니다.');
          }
          else{
-            res.status(201).json("성공");
+            res.status(201).json("success");
          }
         }).catch(err => {
         console.error(err);
