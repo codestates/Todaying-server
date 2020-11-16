@@ -1,6 +1,6 @@
 
 const { card,user,todolist } = require('../../models');
-const users = require('../users');
+
 module.exports={
     post: (req, res) => {
         const { id, email } = req.user;
