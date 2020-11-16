@@ -5,26 +5,22 @@ const {verifyToken} = require('./middleware')
 
 
 
-router.post('/addNote',verifyToken,mainController.addNote.post);
+router.post('/addCard',verifyToken,mainController.addCard.post);
 
-router.post('/addTodo',verifyToken,mainController.addTodo.post)
+router.post('/addTask',verifyToken,mainController.addTask.post)
 
-router.post('/editTodoTitle',verifyToken,mainController.editTodoTitle.post)
+router.post('/deleteCard',verifyToken,mainController.deleteCard.post)
 
-router.post('/editNoteTitle',verifyToken,mainController.editNoteTitle.post)
+router.post('/deleteTask',verifyToken,mainController.deleteTask.post)
 
-router.post('/editTodoContent',verifyToken,mainController.editTodoContent.post)
+router.post('/getAllCards',mainController.getAllCards.post)
 
-router.post('/editNoteTitle',verifyToken,mainController.editNoteTitle.post)
+router.post('/logout',verifyToken,mainController.logout.post)
 
-router.post('/editNoteContent',verifyToken,mainController.editNoteContent.post)
+router.post('/updateNoteText',verifyToken,mainController.updateNoteText.post)
 
-router.post('/logout',verifyToken,mainController.addNote.post)
+router.post('/updateTask',verifyToken,mainController.updateTask.post)
 
-router.get('/',verifyToken, (req,res)=>{
-    console.log(req.user)
-})
+router.post('/updateTitle',verifyToken, mainController.updateTitle.post)
 
-
-
-module.exports= router;
+module.exports = router

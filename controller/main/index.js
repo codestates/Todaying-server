@@ -1,9 +1,14 @@
 module.exports = {
-    addNote: require('./addNote'),
-    editNoteTitle: require('./editNoteTitle'),
-    editNoteContent: require('./editNoteContent'),
-    addTodo: require('./addTodo'),
-    editTodoTitle:require('./editTodoTitle'),
-    editTodoContent:require('./editTodoContent'),
-    logout: require('./logout')    
+    addCard:require('./addCard'),
+    addTask:require('./addTask'),
+    deleteCard:require('./deleteCard'),
+    deleteTask:require('./deleteTask'),
+    getAllCards:require('./getAllCards'),
+    logout:require('./logout'),
+    updateNoteText:require('./updateNoteText'),
+    updateTask:require('./updateTask'),
+    updateTitle:require('./updateTitle')
+
 }
+
+
