@@ -45,7 +45,7 @@ module.exports={
         }
         
         const token = jwt.sign(result, process.env.TOKEN_SECRET)
-        res.redirect(`https://5708382dbb6d.ngrok.io/main?token=${token}`)       
+        res.redirect(`https://21bead2ffbad.ngrok.io/main?token=${token}`)       
       })  
       .catch(err => {console.log(err.message)})      
     } 
