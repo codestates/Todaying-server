@@ -1,16 +1,14 @@
 const { user } = require('../../models');
 const axios = require('axios')
-const dotenv = require('dotenv');
-dotenv.config();
+const jwt = require('jsonwebtoken')
+require('dotenv').config()
 
 module.exports={
     get: (req, res) => {
       const requestToken = req.query.code
       const clientID = process.env.GITHUB_ID;
-      const clientSecret = process.env.GITHUB_SECRET;
-       let result = [];
-       console.log(requestToken)
-
+      const clientSecret = process.env.GITHUB_SECRET;     
+      
   axios({
     method: 'post',
     url: `https://github.com/login/oauth/access_token?client_id=${clientID}&client_secret=${clientSecret}&code=${requestToken}`,
@@ -18,7 +16,7 @@ module.exports={
       accept: 'application/json'
     }
   })
-  .then((response) => {    
+  .then((response) => {        
     accessToken = response.data.access_token;  
     refreshToken = response.data.refresh_token;    
     
@@ -32,7 +30,7 @@ module.exports={
       
   })
   .then (data => {  
-    result.push(data.data[0].email)      
+    email = data.data[0].email       
     return axios({
       method: 'get',
       url: `https://api.github.com/user`,
@@ -41,30 +39,30 @@ module.exports={
       }
     })    
   })
-  .then(data =>{
-    result.push(data.data.login)
-    result.push(data.data.id)
-    result.push(accessToken)  
-    console.log(result)
+  .then(data =>{           
+    
     return user.findOrCreate({
       where: {
-        email: result[0],
+        email: email,
         type: 'github',                 
       },
       defaults: {   
-        nickname: result[1],             
-        uniqueId: result[2] ,
-        token: result[3], 
+        nickname:data.data.login,        
         password:''       
       }
     })      
   }) 
-  .then(data => {       
-    req.session.userId = data[0].dataValues.id
-    let response ={};
-    response.email = data[0].dataValues.email
-    response.nickname = data[0].dataValues.nickname
-    res.send(response)
+  .then(data => {   
+    
+                 
+    const result = {
+      id: data[0].dataValues.id,
+      email:data[0].dataValues.email,
+      nickname:data[0].dataValues.nickname
+    }
+    
+    const token = jwt.sign(result, process.env.TOKEN_SECRET)  
+    res.redirect(`https://5708382dbb6d.ngrok.io/main?token=${token}`)
   }) 
   .catch(err => {
     console.log (err)

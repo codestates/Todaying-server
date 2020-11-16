@@ -13,7 +13,7 @@ const myPageRouter = require('./routes/mypage');
 
 const app = express();
 
-app.set('port', 3006);
+app.set('port', 3001);
 
 app.use(function(req, res) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -23,17 +23,17 @@ app.use(function(req, res) {
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(session({
-  name:'sessiontest',
-  resave: true,
-  saveUninitialized: true,
-  secret: process.env.COOKIE_SECRET,
-  cookie: {
-    httpOnly: true,
-    secure: true,
-    sameSite: 'None'
-  },
-}));
+// app.use(session({
+//   name:'sessiontest',
+//   resave: true,
+//   saveUninitialized: true,
+//   secret: process.env.COOKIE_SECRET,
+//   cookie: {
+//     httpOnly: true,
+//     secure: true,
+//     sameSite: 'None'
+//   },
+// }));
 
 
 app.use(
