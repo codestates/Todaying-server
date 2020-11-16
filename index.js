@@ -8,7 +8,7 @@ dotenv.config();
 
 const userRouter = require('./routes/user');
 const authRouter = require('./routes/auth');
-// const mainRouter = require('./routes/main');
+const mainRouter = require('./routes/main');
 const myPageRouter = require('./routes/mypage');
 
 const app = express();
@@ -41,14 +41,9 @@ app.use(
 
 app.use('/user', userRouter);
 app.use('/auth', authRouter);
-
-// app.use('/main', mainRouter);
+app.use('/main', mainRouter);
 app.use('/mypage', myPageRouter);
 
-
-app.get('/main',(req,res,nex)=> {
-  res.send('리디렉션 성공')
-})
 
 app.get('/', (req, res, next) => {
     res.send('여기는 루트 페이지입니다.');
