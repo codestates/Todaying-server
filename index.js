@@ -19,17 +19,17 @@ app.set('port', 3001);
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(session({
-  name:'sessiontest',
-  resave: true,
-  saveUninitialized: true,
-  secret: process.env.COOKIE_SECRET,
-  cookie: {
-    httpOnly: true,
-    secure: true,
-    sameSite: 'None'
-  },
-}));
+// app.use(session({
+//   name:'sessiontest',
+//   resave: true,
+//   saveUninitialized: true,
+//   secret: process.env.COOKIE_SECRET,
+//   cookie: {
+//     httpOnly: true,
+//     secure: true,
+//     sameSite: 'None'
+//   },
+// }));
 
 app.use(
   cors({

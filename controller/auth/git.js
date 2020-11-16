@@ -1,16 +1,14 @@
 const { user } = require('../../models');
 const axios = require('axios')
-const dotenv = require('dotenv');
-dotenv.config();
+const jwt = require('jsonwebtoken')
+require('dotenv').config()
 
 module.exports={
     get: (req, res) => {
       const requestToken = req.query.code
       const clientID = process.env.GITHUB_ID;
-      const clientSecret = process.env.GITHUB_SECRET;
+      const clientSecret = process.env.GITHUB_SECRET;     
       
-      
-
   axios({
     method: 'post',
     url: `https://github.com/login/oauth/access_token?client_id=${clientID}&client_secret=${clientSecret}&code=${requestToken}`,
@@ -41,33 +39,30 @@ module.exports={
       }
     })    
   })
-  .then(data =>{        
+  .then(data =>{           
+    
     return user.findOrCreate({
       where: {
         email: email,
         type: 'github',                 
       },
       defaults: {   
-        nickname: data.data.login,          
-        token: accessToken, 
+        nickname:data.data.login,        
         password:''       
       }
     })      
   }) 
-  .then(data => {          
-    req.session.userId = data[0].dataValues.id
-   
-    // res.send({
-    //   email:data[0].dataValues.email,
-    //   nickname:data[0].dataValues.nickname
-    // })
-    // req.session.userId = data[0].dataValues.id          
-    // res.send({
-    //   email:data[0].dataValues.email,
-    //   nickname:data[0].dataValues.nickname
-    // })
+  .then(data => {   
     
-    res.redirect(`https://bbc7cc2e1237.ngrok.io/main?email=${data[0].dataValues.email}&nickname=${data[0].dataValues.nickname}`)
+                 
+    const result = {
+      id: data[0].dataValues.id,
+      email:data[0].dataValues.email,
+      nickname:data[0].dataValues.nickname
+    }
+    
+    const token = jwt.sign(result, process.env.TOKEN_SECRET)  
+    res.redirect(`https://5708382dbb6d.ngrok.io/main?token=${token}`)
   }) 
   .catch(err => {
     console.log (err)

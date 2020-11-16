@@ -1,8 +1,8 @@
 const { user } = require('../../models');
 const axios = require('axios')
 const jwt_decode = require('jwt-decode');
-const dotenv = require('dotenv');
-dotenv.config();
+const jwt = require('jsonwebtoken')
+require('dotenv').config()
 
 module.exports={
     get: (req, res) => {
@@ -13,17 +13,16 @@ module.exports={
 
       axios({
         method:'post',
-        url: `https://oauth2.googleapis.com/token?code=${requestToken}&client_id=${clientID}&client_secret=${clientSecret}&grant_type=authorization_code&redirect_uri=https://319c325eb21d.ngrok.io/auth/google`,        
+        url: `https://oauth2.googleapis.com/token?code=${requestToken}&client_id=${clientID}&client_secret=${clientSecret}&grant_type=authorization_code&redirect_uri=https://f954414dd50a.ngrok.io/auth/google`,        
         headers:{'Content-Type': 'application/x-www-form-urlencoded'},
         withCredentials: true    
       })
-      .then(data => {        
-        
+      .then(data => {              
         const idToken= data.data.id_token;        
         let result = jwt_decode(idToken);             
         return result         
       })      
-      .then(data =>{       
+      .then(data =>{     
         return user
         .findOrCreate({
           where: {
@@ -36,14 +35,17 @@ module.exports={
           }
         })
       }) 
-      .then(data => {        
-        req.session.userId = data[0].dataValues.id          
-        // res.send({
-        //   email:data[0].dataValues.email,
-        //   nickname:data[0].dataValues.nickname
-        // })
+      .then(data => {
+        //토큰에 필요한 내용을 담아서 전송한다.   
+        console.log(data)              
+        const result = {
+          id:data[0].dataValues.id,
+          email:data[0].dataValues.email,
+          nickname:data[0].dataValues.nickname 
+        }
         
-        res.redirect(`https://bbc7cc2e1237.ngrok.io/main?email=${data[0].dataValues.email}&nickname=${data[0].dataValues.nickname}`)
+        const token = jwt.sign(result, process.env.TOKEN_SECRET)
+        res.redirect(`https://5708382dbb6d.ngrok.io/main?token=${token}`)       
       })  
       .catch(err => {console.log(err.message)})      
     } 
