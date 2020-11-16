@@ -15,10 +15,6 @@ const app = express();
 
 app.set('port', 3001);
 
-app.use(function(req, res) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-});
 
 app.use(morgan('dev'));
 app.use(express.json());
