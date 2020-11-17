@@ -21,22 +21,25 @@ module.exports={
             date: moment().format("MM/DD/YYYY")
         })
         
-        
+        let taskid = []
         if(data.dataValues.type === 'toDo'){
             for(let i = 1; i < 4; i++){
                 const task = await todolist.create(
                     {
                       cardId : data.dataValues.id,
-                      task: '할일을 적어주세요',
+                      task: '',
                       isDone: false
                     })
+                taskid.push(task.dataValues.id)
             }
+
         }
        
        res.status(200).send({
            cardId: data.dataValues.id,
            title: data.dataValues.title,
            type: data.dataValues.type,
+           taskId: taskid
        })
     }
     catch(error){
