@@ -5,15 +5,19 @@ const moment = require('moment');
 
 module.exports={
     post: async (req, res) => {
-        // const {id} = req.user;        
+        const {id} = req.user;    
+        const {date} = req.body        
         
         let data = await card.findAll({
-            attributes: ['id','type','title','text',],
+            attributes: ['id','type','title','text','userId'],
             where:{
-                date: moment().format("DD/MM/YYYY"),                
+                date: date,
+                userId: id                              
             }
         })
         data = data.map(el => el.get({ plain: true }))
+        
+        
         if(!data){
             res.status(200).send({})
         }
@@ -66,7 +70,7 @@ module.exports={
         }
       
         
-        res.send({cards:cards})
+        res.send(cards)
 
 
     }
