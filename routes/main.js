@@ -13,7 +13,7 @@ router.post('/deleteCard',verifyToken,mainController.deleteCard.post)
 
 router.post('/deleteTask',verifyToken,mainController.deleteTask.post)
 
-router.post('/getAllCards',mainController.getAllCards.post)
+router.post('/getAllCards',verifyToken,mainController.getAllCards.post)
 
 router.post('/logout',verifyToken,mainController.logout.post)
 

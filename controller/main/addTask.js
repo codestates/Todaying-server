@@ -9,9 +9,9 @@ module.exports={
             {
               cardId : cardId,
               task: '할일을 적어주세요',
-              isDone: true
+              isDone: false
             }).then((data)=>{
-            console.log(data);
+            
             res.status(200).send({taskId: data.id});
             
             })
