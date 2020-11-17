@@ -1,6 +1,6 @@
 const { user } = require('../../models');
 const jwt = require('jsonwebtoken')
-require('dotenv').config()
+const dotenv = require('dotenv').config()
 
 module.exports = {
   post: (req, res) => {   
@@ -15,7 +15,8 @@ module.exports = {
           type : 'normal'
         }
       })
-      .then(data => {       
+      .then(data => {   
+          
         //일치하는 정보가 없으면 오류 메세지를 전송한다     
         if (data === null) {              
           res.status(404).send('회원정보 혹은 비밀번호가 일치하지 않습니다.');          
@@ -32,11 +33,11 @@ module.exports = {
         }
       })
       .then(result => {
-        const token = jwt.sign(result, process.env.TOKEN_SECRET)        
+        const token = jwt.sign(result, process.env.TOKEN_SECRET,{expiresIn: '24h'})        
           res.status(200).json(token);
       })
       .catch(err => {
-        res.status(404).send(err.message);
+        res.status(404).send(err);
       });
   }
 };

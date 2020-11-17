@@ -35,7 +35,7 @@ module.exports = {
           email:data.email,
           nickname: data.nickname
         }
-        const token = await jwt.sign(result, process.env.TOKEN_SECRET)
+        const token = await jwt.sign(result, process.env.TOKEN_SECRET,{expiresIn: '24h'})
                             
         
         

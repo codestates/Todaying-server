@@ -8,7 +8,7 @@ module.exports={
           todolist.create(
             {
               cardId : cardId,
-              task: '할일을 적어주세요',
+              task: '',
               isDone: false
             }).then((data)=>{
             
