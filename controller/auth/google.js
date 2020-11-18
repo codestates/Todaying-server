@@ -49,8 +49,12 @@ module.exports = {
         const token = jwt.sign(result, process.env.TOKEN_SECRET, {
           expiresIn: '24h'
         })
-        res.cookie('token', token)
-        res.redirect(`https://todaying.cf/main?token=${token}`)
+        res.cookie('token', token,{
+          httpOnly: true,
+          secure: true,
+          sameSite: 'None'
+        })
+        res.redirect(`https://todaying.cf/main`)
       })
       .catch(err => {
         console.error(err)

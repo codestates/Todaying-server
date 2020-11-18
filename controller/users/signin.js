@@ -39,7 +39,11 @@ module.exports = {
         const token = jwt.sign(result, process.env.TOKEN_SECRET, {
           expiresIn: '24h'
         })
-        res.cookie('token', token)
+        res.cookie('token', token,{
+          httpOnly: true,
+          secure: true,
+          sameSite: 'None'
+        })
         res.status(200).json(token);
       })
       .catch(err => {
