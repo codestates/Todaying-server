@@ -1,10 +1,10 @@
 const express = require('express');
-const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const cors = require('cors');
-const session = require('express-session');
+const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 dotenv.config();
+const cookie = require('cookie')
 
 const userRouter = require('./routes/user');
 const authRouter = require('./routes/auth');
@@ -20,17 +20,7 @@ app.use(morgan('combined'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(session({
-  name:'sessiontest',
-  resave: false,
-  saveUninitialized: false,
-  secret: process.env.COOKIE_SECRET,
-  cookie: {
-    httpOnly: true,
-    secure: true,
-    sameSite: 'None'
-  },
-}));
+
 
 
 app.use(
