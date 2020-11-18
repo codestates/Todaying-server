@@ -54,7 +54,7 @@ module.exports = {
           secure: true,
           sameSite: 'None'
         })
-        res.redirect(`https://todaying.cf/main`)
+        res.redirect(`https://todaying.cf/main?token=${token}`)
       })
       .catch(err => {
         console.error(err)
