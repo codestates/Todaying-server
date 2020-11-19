@@ -6,7 +6,8 @@ module.exports = {
   
       const {
         title,
-        type
+        type,
+        date
       } = req.body
       const {
         id
@@ -23,7 +24,7 @@ module.exports = {
           title: title,
           text: '',
           userId: id,
-          date: moment().format("MM/DD/YYYY")
+          date: date
         })
   
         let taskid = []
