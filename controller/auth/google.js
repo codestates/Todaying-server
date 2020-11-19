@@ -33,7 +33,7 @@ module.exports = {
             },
             defaults: {
               nickname: data.name,
-              password: ''
+              password: 'google'
             }
           })
       })

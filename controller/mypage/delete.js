@@ -15,9 +15,18 @@ module.exports = {
       if (!email || !password) {
         return res.status(422).send("이메일 혹은 비밀번호가 누락되었습니다.");
       }
+      const findUser = await user.findOne({
+        where:{
+          email: email,
+          password: password
+        }
+      })
 
+      if(!findUser){
+        return res.status(422).send('잘못된 정보를 입력했습니다.')
+      }
       //먼저 노트부터 지워준다
-
+      
       const noteDelete = await card.destroy({
         where: {
           userId: id,

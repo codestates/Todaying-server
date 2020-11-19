@@ -48,7 +48,7 @@ module.exports = {
           },
           defaults: {
             nickname: data.data.login,
-            password: ''
+            password: 'git'
           }
         })
       })
