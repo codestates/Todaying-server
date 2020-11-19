@@ -57,7 +57,7 @@ module.exports = {
 
 
 
-      const delUser = user.destroy({
+      const delUser = await user.destroy({
         where: {
           id: id,
           email: email,
