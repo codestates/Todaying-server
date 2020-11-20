@@ -1,4 +1,4 @@
-<img src="./README_IMAGE/Logo.png" width="350px" height="200px" alt="TodayingLogo"></img><br/>
+<img src="./textLogo_3X.png" width="350px" height="200px" alt="TodayingLogo"></img><br/>
 
 # **Todaying :연필2::파란색_책:**
 팀명 : dayfly<br>
@@ -27,8 +27,8 @@
 # **Workflow**
 **Client-Side(React Components)**<br>
 
-<img src="./README_IMAGE/components.png" width="450px" height="450px" alt="Components"></img><br/>
+<img src="./compo.png" width="600px" height="500px" alt="Components"></img><br/>
 
 **Server-Side(Data Schema)**<br>
 
-<img src="./데이터 베이스 스키마.png" width="600px" height="450px" alt="data_schema"></img><br/>
+<img src="./데이터 베이스 스키마.png" width="600px" height="500px" alt="data_schema"></img><br/>
