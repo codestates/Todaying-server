@@ -1,4 +1,4 @@
-<img src="./textLogo_3x.png" width="350px" height="200px" alt="TodayingLogo"></img><br/>
+<img src="./textLogo_3x.png" width="600px" height="200px" alt="TodayingLogo"></img><br/>
 
 # **Todaying :연필2::파란색_책:**
 팀명 : dayfly<br>
