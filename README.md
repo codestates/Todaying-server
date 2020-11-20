@@ -2,7 +2,7 @@
 <img src="./textLogo_3x.png" width="600px" height="200px" alt="TodayingLogo"></img><br/>
 
 
-# **Todaying :연필2::파란색_책:**
+# **Todaying :pencil2::blue_book:**
 
 팀명 : dayfly<br>
 프로젝트명 : Todaying<br>
