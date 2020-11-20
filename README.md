@@ -31,4 +31,4 @@
 
 **Server-Side(Data Schema)**<br>
 
-<img src="./README_IMAGE/data_schema.png" width="450px" height="450px" alt="data_schema"></img><br/>
+<img src="./data_schema.png" width="450px" height="450px" alt="data_schema"></img><br/>
