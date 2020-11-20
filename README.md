@@ -31,4 +31,4 @@
 
 **Server-Side(Data Schema)**<br>
 
-<img src="./데이터 베이스 스키마.png" width="450px" height="450px" alt="data_schema"></img><br/>
+<img src="./데이터 베이스 스키마.png" width="600px" height="450px" alt="data_schema"></img><br/>
