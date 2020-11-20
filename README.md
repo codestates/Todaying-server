@@ -1,7 +1,9 @@
+
 <img src="./textLogo_3x.png" width="600px" height="200px" alt="TodayingLogo"></img><br/>
 
-# **Todaying :pencil2::blue_book:**
-<p>
+
+# **Todaying :연필2::파란색_책:**
+
 팀명 : dayfly<br>
 프로젝트명 : Todaying<br>
 설명 : <br>**'Todaying'**은 하루에도 기억하기 힘들 정도로 많은 일을 처리하는 사람들을 위한 앱입니다.<br>
@@ -35,3 +37,4 @@
 **Server-Side(Data Schema)**<br>
 
 <img src="./데이터 베이스 스키마.png" width="600px" height="500px" alt="data_schema"></img><br/>
+
