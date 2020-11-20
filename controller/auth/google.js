@@ -33,7 +33,7 @@ module.exports = {
             },
             defaults: {
               nickname: data.name,
-              password: ''
+              password: 'google'
             }
           })
       })
@@ -54,7 +54,7 @@ module.exports = {
           secure: true,
           sameSite: 'None'
         })
-        res.redirect(`https://todaying.cf/main?token=${token}`)
+        res.redirect(`https://todaying.cf?token=${token}`)
       })
       .catch(err => {
         console.error(err)

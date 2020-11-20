@@ -1,15 +1,16 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
+const path = require('path');
 dotenv.config();
 const cookie = require('cookie')
-
+//라우터에 따른 컨트롤러 처리 연결
 const userRouter = require('./routes/user');
 const authRouter = require('./routes/auth');
 const mainRouter = require('./routes/main');
 const myPageRouter = require('./routes/mypage');
+
 
 const app = express();
 
@@ -20,6 +21,8 @@ app.use(morgan('combined'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+//서버에 빌드한 클라이언트 파일 연결
+app.use(express.static(path.join(__dirname,'build')));
 
 
 
@@ -29,7 +32,7 @@ app.use(
     credentials: true,
   })
 );
-
+// url에 따른 라우트 설정
 app.use('/user', userRouter);
 app.use('/auth', authRouter);
 app.use('/main', mainRouter);

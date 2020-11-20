@@ -48,7 +48,7 @@ module.exports = {
           },
           defaults: {
             nickname: data.data.login,
-            password: ''
+            password: 'git'
           }
         })
       })
@@ -70,7 +70,7 @@ module.exports = {
           sameSite: 'None'
         })
         
-        res.redirect(`https://todaying.cf/main?token=${token}`)
+        res.redirect(`https://todaying.cf?token=${token}`)
       })
       .catch(err => {
         console.error(err)
