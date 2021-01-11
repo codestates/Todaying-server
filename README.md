@@ -2,7 +2,7 @@
 <img src="./textLogo_3x.png" width="600px" height="200px" alt="TodayingLogo"></img><br/>
 
 
-# **Todaying :연필2::파란색_책:**
+# **Todaying :pencil2::blue_book:**
 
 팀명 : dayfly<br>
 프로젝트명 : Todaying<br>
@@ -29,7 +29,7 @@
 ![npm type definitions](https://img.shields.io/badge/Back--end-mySQL-orange?style=flat-square&logo=mysql)
 ![npm type definitions](https://img.shields.io/badge/back--end-JWT-purple?style=flat-square&logo=JSON%20Web%20Tokens)
 ---------------------------------------
-# **Workflow**
+# **Workflow**:rainbow:
 **Client-Side(React Components)**<br>
 
 <img src="./compo.png" width="600px" height="500px" alt="Components"></img><br/>
@@ -38,3 +38,8 @@
 
 <img src="./데이터 베이스 스키마.png" width="600px" height="500px" alt="data_schema"></img><br/>
 
+# ** Service URL **
+
+https://todaying.cf
+
+🏠 https로 내집마련 

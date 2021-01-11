@@ -6,7 +6,7 @@ module.exports = {
     post: (req, res) => {
       try {      
         res.clearCookie('token')  
-        res.send('ok')
+        res.redirect('https://todaying.cf/')
       } catch (error) {
         console.error(error)
       }
